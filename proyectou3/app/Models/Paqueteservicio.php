@@ -10,19 +10,17 @@ class Paqueteservicio extends Model
     use HasFactory;
 
     protected $fillable = [
-        'paquete_id',
-        'servicio_id',
+        'id_paquete',
+        'id_servicio',
     ];
 
     public function paquete()
     {
-        return $this->belongsTo(Paquete::class);
+        return $this->belongsTo(Paquete::class, 'id_paquete', 'id');
     }
 
     public function servicio()
     {
-        return $this->belongsTo(Servicio::class);
+        return $this->belongsTo(Servicio::class, 'id_servicio', 'id');
     }
-
-    
 }

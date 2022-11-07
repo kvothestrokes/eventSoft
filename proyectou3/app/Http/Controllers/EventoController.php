@@ -5,17 +5,23 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Evento;
+use App\Models\Paquete;
 use Illuminate\Support\Facades\Auth;
 
 class EventoController extends Controller
-{
-    //
+{       
+
     public function listarEventos(){
         //events of the user
         $user = Auth::user();
         $eventos = Evento::where('id_usuario', $user->id )->get();
         
         return view('eventos', compact('eventos'));
+    }
+
+    public function eventoPaquete(Paquete $p){
+        dd($p);
+        return;
     }
 
     public function crearEvento(Request $request){

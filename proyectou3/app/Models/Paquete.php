@@ -14,8 +14,6 @@ class Paquete extends Model
         'precio',
         'imagen',            
     ];
-
-
-
+    
     use HasFactory;
 }
