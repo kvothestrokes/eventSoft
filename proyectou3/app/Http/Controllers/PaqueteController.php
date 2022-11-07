@@ -7,6 +7,7 @@ use App\Models\Paquete;
 use App\Models\Servicio;
 use App\Models\Paqueteservicio;
 use App\Models\Evento;
+use Hamcrest\Type\IsObject;
 use Illuminate\Support\Facades\Auth;
 
 use function PHPUnit\Framework\isNull;
@@ -18,8 +19,13 @@ class PaqueteController extends Controller
         
         $paquetes = Paquete::all();
         $rol = "";
-        if(Auth::user()){
-            $rol = Auth::user()->rol;
+
+        try {
+            if(is_object(Auth::user())){
+                $rol = Auth::user()->rol;
+            }    
+        } catch (\Throwable $th) {
+            //throw $th;
         }
 
         //get services by paquete

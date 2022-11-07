@@ -15,9 +15,7 @@ use App\Http\Controllers\EventoController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [PaqueteController::class, 'listarPaquetes'])->name('home');
 
 Auth::routes();
 
