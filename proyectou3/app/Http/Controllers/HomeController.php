@@ -31,7 +31,7 @@ class HomeController extends Controller
 
         //get services by paquete
         foreach($paquetes as $paquete){
-            $services = Paqueteservicio::where('paquete_id', $paquete->id)->get();
+            $services = Paqueteservicio::where('id', $paquete->id)->get();
             $paquete["services"] = $services;            
         }
 

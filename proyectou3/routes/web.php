@@ -25,11 +25,11 @@ Route::get('/home', [PaqueteController::class, 'listarPaquetes'])->name('home');
 
 Route::prefix('paquetes')->group(function(){
     Route::get('/', [PaqueteController::class, 'listarPaquetes'])->name('paquetes_index');
-    // Route::get('/create', [PaqueteController::class, 'create'])->name('paquetes_create');
-    // Route::post('/store', [PaqueteController::class, 'store'])->name('paquetes_store');
-    // Route::get('/{id}/edit', [PaqueteController::class, 'edit'])->name('paquetes_edit');
-    // Route::put('/{id}/update', [PaqueteController::class, 'update'])->name('paquetes_update');
-    // Route::delete('/{id}/destroy', [PaqueteController::class, 'destroy'])->name('paquetes_destroy');
+    Route::get('/create', [PaqueteController::class, 'createView'])->name('paquetes_create');
+    Route::post('/store', [PaqueteController::class, 'crearPaquete'])->name('paquetes_store');
+    Route::get('/{id}/edit', [PaqueteController::class, 'editPaquete'])->name('paquetes_edit');
+    Route::post('/{id}/update', [PaqueteController::class, 'editarPaquete'])->name('paquetes_update');
+    Route::get('/{id}/destroy', [PaqueteController::class, 'destroyPaquete'])->name('paquetes_destroy');
 });
 
 Route::prefix('evento')->group(function(){

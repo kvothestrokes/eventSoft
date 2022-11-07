@@ -18,7 +18,8 @@ class CreatePaquetesTable extends Migration
             $table->string('nombre');
             $table->string('descripcion');
             $table->float('precio');
-            $table->string('imagen');            
+            $table->longText('imagen');                
+            $table->boolean("status")->default(false);
             $table->timestamps();
         });
     }
