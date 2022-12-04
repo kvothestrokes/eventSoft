@@ -34,10 +34,28 @@ class PaqueteController extends Controller
             $paquete["services"] = $services;            
         }
 
+        
+        //si es admin
+        if($rol == "admin"){
+            return view('admin.panel', [
+                'paquetes' => $paquetes,
+                'rol' => $rol,
+            ]);
+        }
+        
+        // si es cliente
+        if($rol == "cliente"){
+            return view('paquetes', [
+                'paquetes' => $paquetes,
+                'rol' => $rol,
+            ]);
+        }
+
         return view('paquetes', [
             'paquetes' => $paquetes,
             'rol' => $rol,
         ]);
+       
     }
 
     public function createView(){

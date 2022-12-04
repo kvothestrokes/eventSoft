@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaqueteController;
 use App\Http\Controllers\EventoController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ServicioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,4 +40,24 @@ Route::prefix('evento')->group(function(){
     // Route::get('/{id}/edit', [EventoController::class, 'edit'])->name('evento_edit');
     // Route::put('/{id}/update', [EventoController::class, 'update'])->name('evento_update');
     // Route::delete('/{id}/destroy', [EventoController::class, 'destroy'])->name('evento_destroy');
+});
+
+//usuarios
+Route::prefix('usuarios')->group(function(){
+    Route::get('/', [UserController::class, 'index'])->name('usuarios_index');
+    Route::get('/{id}/edit', [UserController::class, 'editUsuario'])->name('usuarios_edit');    
+    Route::post('/{id}/update', [UserController::class, 'editarUsuario'])->name('usuarios_update');
+    Route::get('/{id}/destroy', [UserController::class, 'destroyUsuario'])->name('usuarios_destroy');
+    Route::get('/create', [UserController::class, 'createUsuario'])->name('usuarios_create');
+    Route::post('/store', [UserController::class, 'storeUsuario'])->name('usuarios_store');
+});
+
+//servicios
+Route::prefix('servicios')->group(function(){
+    Route::get('/', [ServicioController::class, 'index'])->name('servicios_index');
+    Route::get('/{id}/edit', [ServicioController::class, 'editServicio'])->name('servicios_edit');    
+    Route::post('/{id}/update', [ServicioController::class, 'editarServicios'])->name('servicios_update');
+    Route::get('/{id}/destroy', [ServicioController::class, 'eliminarServicio'])->name('servicios_destroy');
+    Route::get('/create', [ServicioController::class, 'newUser'])->name('servicios_create');
+    Route::post('/store', [ServicioController::class, 'crearServicio'])->name('servicios_store');
 });

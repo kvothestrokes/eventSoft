@@ -8,9 +8,14 @@ use App\Models\Servicio;
 class ServicioController extends Controller
 {
     //
-    public function listarServicios(){
+    public function index(){
         $servicios = Servicio::all();
-        return view('servicios', compact('servicios'));
+        return view('admin.services_list', compact('servicios'));
+    }
+
+
+    public function newUser(){
+        return view('admin.servicios_create');
     }
 
     public function crearServicio(Request $request){
@@ -21,25 +26,31 @@ class ServicioController extends Controller
 
         $servicio->save();
 
-        return redirect()->route('servicios');
+        return redirect()->route('servicios_index');
     }
 
     public function eliminarServicio($id){
         $servicio = Servicio::find($id);
         $servicio->delete();
 
-        return redirect()->route('servicios');
+        return redirect()->route('servicios_index');
     }
 
-    public function editarServicio(Request $r ,Servicio $id){
-        $servicio = Servicio::find($id);
-        $servicio->update([
-            'nombre' => $r->nombre,            
-            'descripcion' => $r->descripcion,   
-            'precio' => $r->precio,
-        ]);
 
-        return view('servicios');
+    public function editServicio($id){
+        $servicio = Servicio::find($id);
+        return view('admin.servicios_edit', compact('servicio'));
+    }
+
+    public function editarServicios(Request $r ,Servicio $id){
+        $servicio = Servicio::find($id)[0];
+        $servicio->nombre = $r->nombre;
+        $servicio->descripcion = $r->descripcion;
+        $servicio->precio = $r->precio;
+
+        $servicio->save();
+
+        return redirect()->route('servicios_index');
     }
 
 }
