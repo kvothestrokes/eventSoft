@@ -5,6 +5,7 @@ use App\Http\Controllers\PaqueteController;
 use App\Http\Controllers\EventoController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ServicioController;
+use App\Http\Controllers\AbonoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,11 +18,13 @@ use App\Http\Controllers\ServicioController;
 |
 */
 
-Route::get('/', [PaqueteController::class, 'listarPaquetes'])->name('home');
+Route::get('/', [PaqueteController::class, 'listarPaquetes'])->name('paquetes_index');
 
 Auth::routes();
 
 Route::get('/home', [PaqueteController::class, 'listarPaquetes'])->name('home');
+
+Route::get('/admin-panel', [UserController::class, 'panelAdmin'])->name('admin_panel');
 
 Route::prefix('paquetes')->group(function(){
     Route::get('/', [PaqueteController::class, 'listarPaquetes'])->name('paquetes_index');
@@ -34,12 +37,16 @@ Route::prefix('paquetes')->group(function(){
 
 Route::prefix('evento')->group(function(){
     Route::get('/reservar/{id}', [EventoController::class, 'eventoPaquete'])->name('reservarPaquete');
-    // Route::get('/', [EventoController::class, 'index'])->name('evento_index');
+    Route::post('/store', [EventoController::class, 'crearEvento'])->name('evento_store');
+    Route::get('/mis-eventos', [EventoController::class, 'listarEventos'])->name('evento_index');
+    Route::get('/lista', [EventoController::class, 'listaEventosAdmin'])->name('evento_admin');
+    Route::get('/{id}/cambiar-estado/{estado}', [EventoController::class, 'cambiarEstado'])->name('evento_cambiar_estado');
+    Route::get('/{id}/edit', [EventoController::class, 'editarEventoView'])->name('evento_edit');
+    Route::post('/{id}/update', [EventoController::class, 'editarEvento'])->name('evento_update');
     // Route::get('/create', [EventoController::class, 'create'])->name('evento_create');
-    // Route::post('/store', [EventoController::class, 'store'])->name('evento_store');
-    // Route::get('/{id}/edit', [EventoController::class, 'edit'])->name('evento_edit');
-    // Route::put('/{id}/update', [EventoController::class, 'update'])->name('evento_update');
-    // Route::delete('/{id}/destroy', [EventoController::class, 'destroy'])->name('evento_destroy');
+    Route::delete('/{id}/destroy', [EventoController::class, 'eliminarEvento'])->name('evento_destroy');
+
+    Route::get('/detalle-evento/{id}', [EventoController::class, 'detalleEvento'])->name('detalle_evento');
 });
 
 //usuarios
@@ -61,3 +68,6 @@ Route::prefix('servicios')->group(function(){
     Route::get('/create', [ServicioController::class, 'newUser'])->name('servicios_create');
     Route::post('/store', [ServicioController::class, 'crearServicio'])->name('servicios_store');
 });
+
+Route::post('/abonar', [AbonoController::class, 'abonar'])->name('abonar');
+

@@ -8,9 +8,8 @@
                 <div class="card-header">Panel administrador</div>
                 <div class="card-body">                    
                     <a href="{{route('usuarios_index')}}" class="btn btn-primary"> Lista de usuarios </a>
-                    <a href="{{route('servicios_index')}}" class="btn btn-primary"> Lista de Servicios </a>                
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <a href="{{route('servicios_index')}}" class="btn btn-primary"> Lista de Servicios </a>             
+                    <a href="{{route('evento_admin')}}" class="btn btn-primary"> Lista de Eventos </a>             
                 </div>                
             </div>
         </div>

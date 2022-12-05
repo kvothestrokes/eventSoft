@@ -12,7 +12,10 @@ class Evento extends Model
         'id_usuario',
         'id_paquete',
         'fecha_evento',   
-        'estado',        
+        'estado',   
+        'hora_evento_inicio',
+        'hora_evento_fin',   
+        'rechazado_por' ,
     ];
 
     public function paquete(){

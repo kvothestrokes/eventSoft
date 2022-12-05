@@ -56,9 +56,9 @@
                         @else
 
                             @if(Auth::user()->rol == "admin")
-                                <!-- <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('paquetes_index') }}">Paquetes</a>
-                                </li> -->
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('admin_panel') }}">Panel Administrador</a>
+                                </li>
                                 <li class="nav-item dropdown">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="{{ route('paquetes_index') }}" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                         Paquetes
@@ -76,6 +76,9 @@
                             @else
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('paquetes_index') }}">Paquetes</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('evento_index') }}">Mis Eventos</a>
                                 </li>
                             @endif
 

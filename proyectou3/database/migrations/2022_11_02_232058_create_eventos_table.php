@@ -20,7 +20,10 @@ class CreateEventosTable extends Migration
             $table->foreign('id_usuario')->references('id')->on('users');
             $table->unsignedBigInteger('id_paquete');
             $table->foreign('id_paquete')->references('id')->on('paquetes');
-            $table->date('fecha_evento');
+            $table->date('fecha_evento_inicio');
+            $table->string('hora_evento_inicio');
+            $table->string('hora_evento_fin');            
+            $table->string('rechazado_por')->nullable();  
             $table->string('estado');
             $table->timestamps();
         });
