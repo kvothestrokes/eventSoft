@@ -61,13 +61,26 @@
                             </div>
                         </div>
 
+                        <!-- select multiple de servicios -->
+                        <div class="row mb-3">
+                            <label for="servicios" class="col-md-4 col-form-label text-md-end">Servicios</label>
+
+                            <div class="col-md-6">
+                                <select id="servicios" class="form-control" name="servicios[]" multiple>
+                                    @foreach($services as $servicio)
+                                        <option value="{{ $servicio->id }}">{{ $servicio->nombre }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
                         <div class="row mb-3">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">                                    
                                     <label class="form-check-label" for="status">
                                         Activo
                                     </label>
-                                    <input class="form-check-input" type="checkbox" name="status" id="status">
+                                    <input class="form-check-input" type="checkbox" name="status" id="status" checked>
                                 </div>
                             </div>
                         </div>

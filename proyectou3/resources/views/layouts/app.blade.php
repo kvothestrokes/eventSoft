@@ -73,7 +73,7 @@
                                         </a>                                   
                                     </div>                               
                                 </li>
-                            @else
+                            @elseif(Auth::user()->rol == "cliente")
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('paquetes_index') }}">Paquetes</a>
                                 </li>

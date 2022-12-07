@@ -6,6 +6,8 @@ use App\Http\Controllers\EventoController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ServicioController;
 use App\Http\Controllers\AbonoController;
+use App\Http\Controllers\FotosController;
+use App\Http\Controllers\GastosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,18 +37,18 @@ Route::prefix('paquetes')->group(function(){
     Route::get('/{id}/destroy', [PaqueteController::class, 'destroyPaquete'])->name('paquetes_destroy');
 });
 
-Route::prefix('evento')->group(function(){
+Route::prefix('eventos')->group(function(){
     Route::get('/reservar/{id}', [EventoController::class, 'eventoPaquete'])->name('reservarPaquete');
     Route::post('/store', [EventoController::class, 'crearEvento'])->name('evento_store');
     Route::get('/mis-eventos', [EventoController::class, 'listarEventos'])->name('evento_index');
     Route::get('/lista', [EventoController::class, 'listaEventosAdmin'])->name('evento_admin');
     Route::get('/{id}/cambiar-estado/{estado}', [EventoController::class, 'cambiarEstado'])->name('evento_cambiar_estado');
     Route::get('/{id}/edit', [EventoController::class, 'editarEventoView'])->name('evento_edit');
-    Route::post('/{id}/update', [EventoController::class, 'editarEvento'])->name('evento_update');
-    // Route::get('/create', [EventoController::class, 'create'])->name('evento_create');
+    Route::post('/{id}/update', [EventoController::class, 'editarEvento'])->name('evento_update');    
     Route::delete('/{id}/destroy', [EventoController::class, 'eliminarEvento'])->name('evento_destroy');
-
     Route::get('/detalle-evento/{id}', [EventoController::class, 'detalleEvento'])->name('detalle_evento');
+
+    Route::get('/empleado', [EventoController::class, 'listaEventosEmpleado'])->name('evento_empleado');
 });
 
 //usuarios
@@ -71,3 +73,13 @@ Route::prefix('servicios')->group(function(){
 
 Route::post('/abonar', [AbonoController::class, 'abonar'])->name('abonar');
 
+
+//fotos
+Route::prefix('fotos')->group(function(){
+    Route::post('/create', [FotosController::class, 'addFoto'])->name('fotos_create');    
+    Route::get('/{id}/destroy', [FotosController::class, 'deleteFoto'])->name('fotos_destroy');    
+    Route::post('/{id}/update', [FotosController::class, 'editFoto'])->name('fotos_update');
+});
+
+//gastos
+Route::post('/agregar-gasto', [GastosController::class, 'crearGatos'])->name('gasto_create');

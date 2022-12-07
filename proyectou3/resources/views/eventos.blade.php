@@ -25,7 +25,9 @@
                    @foreach($eventos as $e)
                     <tr>
                         <th scope="row">{{$loop->index + 1}}</th>
-                        <td>{{$e->nombre}}</td>
+                        <td>
+                            <a href="{{route('detalle_evento', ['id' => $e->id])}}"> {{$e->nombre}} </a>
+                        </td>
                         <td>{{$e->fecha_evento_inicio}}</td>
                         <td>{{$e->hora_evento_inicio}}</td>
                         <td>{{$e->hora_evento_fin}}</td>

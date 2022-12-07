@@ -23,6 +23,9 @@ class CreateEventosTable extends Migration
             $table->date('fecha_evento_inicio');
             $table->string('hora_evento_inicio');
             $table->string('hora_evento_fin');            
+            $table->integer('cantidad_invitados');
+            $table->string('proposito');
+            $table->integer('autorizado_por')->nullable();
             $table->string('rechazado_por')->nullable();  
             $table->string('estado');
             $table->timestamps();

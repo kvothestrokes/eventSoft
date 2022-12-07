@@ -37,6 +37,22 @@
                                 @enderror
                             </div>
                         </div>
+
+                        <div class="row mb-3">
+                            <label for="nombre" class="col-md-4 col-form-label text-md-end">Cantidad de invitados: </label>
+                            <div class="col-md-6">
+                                <input id="invitados" type="number"  class="form-control @error('invitados') is-invalid @enderror" name="invitados" required autofocus>                                
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="proposito" class="col-md-4 col-form-label text-md-end">Proposito del evento: </label>
+                            <div class="col-md-6">
+                                <input id="proposito" type="text"  class="form-control @error('proposito') is-invalid @enderror" name="proposito" required autocomplete="proposito" autofocus>                               
+                            </div>
+                        </div>
+                        
+
                         <div class="row mb-3">
                             <label for="fecha" class="col-md-4 col-form-label text-md-end">Fecha de evento: </label>
                             <div class="col-md-6">

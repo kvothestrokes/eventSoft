@@ -57,7 +57,19 @@
                             <label for="imagen" class="col-md-4 col-form-label text-md-end">Imagen</label>
 
                             <div class="col-md-6">
-                                <input id="imagen" type="file" class="form-control" name="imagen"  required>                               
+                                <input id="imagen" type="file" class="form-control" name="imagen">                               
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="servicios" class="col-md-4 col-form-label text-md-end">Servicios</label>
+
+                            <div class="col-md-6">
+                                <select id="servicios" class="form-control" name="servicios[]" multiple>                                    
+                                    @foreach($services as $servicio)
+                                        <option value="{{ $servicio->id }}" @if(in_array($servicio->id, $serviciosEnPaquete)) selected @endif >{{ $servicio->nombre }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 

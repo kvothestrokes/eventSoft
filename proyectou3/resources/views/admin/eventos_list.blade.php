@@ -44,11 +44,7 @@
                                 <a href="{{route('evento_cambiar_estado', ['id' => $e->id, 'estado' => 'aceptado'])}}" class="btn btn-success">Aceptar</a>                                 
                                 <a href="{{route('evento_cambiar_estado', ['id' => $e->id, 'estado' => 'rechazado'])}}" class="btn btn-danger">Rechazar</a>                                                                 
                             @endif
-                        </td>
-                        <td>
-                            @if($e->estado == 'aceptado')
-                                <a href="#" class="btn btn-success">Abonar</a>                                 
-                            @endif
+                        </td>                                                   
                     </tr>
                     @endforeach
                 </tbody>

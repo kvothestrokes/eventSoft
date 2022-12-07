@@ -15,6 +15,9 @@ class Evento extends Model
         'estado',   
         'hora_evento_inicio',
         'hora_evento_fin',   
+        'cantidad_invitados',
+        'proposito',
+        'autorizado_por',
         'rechazado_por' ,
     ];
 
