@@ -18,7 +18,7 @@ class UsuariosSeeder extends Seeder
 
         $user->name = "UsuarioA";
         $user->email = "usuario1@usuario1.com";
-        $user->password = "12345678";
+        $user->password = bcrypt("12345678");
         $user->rol = "cliente";
 
         $user->save();
@@ -27,16 +27,16 @@ class UsuariosSeeder extends Seeder
 
         $user2->name = "UsuarioB";
         $user2->email = "usuario2@usuario2.com";
-        $user2->password = "12345678";
+        $user2->password = bcrypt("12345678");
         $user2->rol = "vendedor";
 
         $user2->save();
 
         $user3 = new User();
 
-        $user3->name = "UsuarioB";
+        $user3->name = "UsuarioC";
         $user3->email = "usuario3@usuario3.com";
-        $user3->password = "12345678";
+        $user3->password = bcrypt("12345678");
         $user3->rol = "admin";
 
         $user3->save();
