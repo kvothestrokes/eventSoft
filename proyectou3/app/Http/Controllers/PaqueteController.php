@@ -42,7 +42,7 @@ class PaqueteController extends Controller
             'paquetes' => $paquetes,
             'rol' => $rol,
         ]);
-       
+
     }
 
     public function createView(){
